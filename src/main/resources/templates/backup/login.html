@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- 타임리프 -->
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>LOGIN</title>
+	</head>
+	<body>
+	<h2>LOGIN PAGE</h2>
+		<!-- login페이지 -->
+		<!-- 아이디, 비번 입력하는 폼(loginForm), submit=loginProc로 post 방식 -->
+		<form id="loginForm" action="/member/loginProc" method="post">
+			ID : <input type="text" id="memid" name="memid" placeholder="id"><br />
+			PW : <input type="password" id="mempw" name="mempw" placeholder="pw"><br />
+			<input type="submit" value="로그인">
+		</form>
+		
+		<a href="/">MAIN</a>
+		<a href="/member/join">JOIN</a>
+		
+	</body>
+</html>

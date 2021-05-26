@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- 타임리프 -->
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>LOGIN OK!</title>
+	</head>
+	<body>
+	<h2>LOGIN OK!</h2>
+		<!-- 회원가입 화면에서는 메인으로만 돌아갈 수 있음 -->
+		<!-- 방금 login을 한 그 아이디를 가져오고 싶은데... -->
+		ID : ${member.memid} <br />
+		PW : ${member.mempw} <br />
+		MAIL : ${member.memmail} <br />
+		<!--  
+     	<div th:object ="${member.memid}">
+     		<p th:text="*{member.memid}"></p>
+     	</div>
+     	<br />
+     	-->
+		<a href="/">MAIN</a>
+		<a th:if="${session.memid != null}" href="/member/list">회원목록</a>
+		<a th:if="${session.memid != null}" href="/member/logout">LOGOUT</a>
+	</body>
+</html>

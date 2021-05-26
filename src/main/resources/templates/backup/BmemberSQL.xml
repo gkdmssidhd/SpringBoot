@@ -1,0 +1,77 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+<!-- 	<select id="findByUsername" parameterType="String" resultType="CmUserVO"> -->
+<!-- 	<![CDATA[ -->
+<!-- 		SELECT USR_REG_SEQ			/* 사용자등록일련번호 */ -->
+<!-- 		     , CHR_REG_NO			/* 교적번호 */ -->
+<!-- 		     , USR_ID				/* 사용자아이디 */ -->
+<!-- 		     , USR_PW 				/* 사용자비밀번호 */ -->
+<!-- 		     , USR_ROLE				/* 사용자권한 */ -->
+<!-- 		     , ACNT_ST_CD			/* 계정상태코드 */ -->
+<!-- 		  FROM TB_USER -->
+<!-- 		 WHERE USR_ID = #{username}  -->
+<!-- 	]]>	 -->
+<!-- 	</select> -->
+	<insert id="insertMember" parameterType="MemberVO">
+	<!-- CDATA 특수기호들 인식하게 -->
+	<![CDATA[ 
+		INSERT 
+		  INTO MEMBER
+		       (
+		       	MEMID
+		      , MEMPW
+		      , MEMMAIL
+		       )
+		VALUES (
+				#{memid}
+			  , #{mempw}
+			  , #{memmail}
+			   )
+	]]>
+	</insert>
+	
+	<!-- select는 결과를 받아야되는 형식을 지정해야함. 결과 resultType지정 -->
+	<select id="selectMember" parameterType="MemberVO" resultType="MemberVO"> 
+	<![CDATA[
+		SELECT MEMID
+			 , MEMPW
+			 , MEMMAIL
+		  FROM MEMBER 
+		 WHERE MEMID = #{memid} 
+		   AND MEMPW = #{mempw}
+	]]>
+	</select>
+
+	<select id="selectMemberList" parameterType="MemberVO" resultType="MemberVO"> 
+	<!-- SELECT MEMID, MEMPW, MEMMAIL을 FORM MEMBER에서 다 검색해서 가져와라 -->
+	<![CDATA[
+		SELECT MEMID
+			 , MEMPW
+			 , MEMMAIL
+		  FROM MEMBER
+	]]>
+	</select>
+	
+	<!-- selectdetail -->
+	<select id="selectDetail" parameterType="String" resultType="MemberVO"> 
+	<!-- SELECT MEMID, MEMPW, MEMMAIL을 FORM MEMBER에서 다 검색해서 가져와라 -->
+	<![CDATA[
+		SELECT MEMID
+			 , MEMPW
+			 , MEMMAIL 
+		  FROM MEMBER
+		 WHERE MEMID = #{memid} 
+	]]>
+	</select>
+	
+	<update id="updateMember" parameterType="MemberVO">
+	<!-- UPDATE 테이블 이름 SET 필드이름 = 데이터값 , WHERE 필드이름 = 데이터값 -->
+	<!-- MEMBER테이블에서 MEMID를 찾아서 MEMPW와 MEMAIL을 새로 입력한걸로 바꿀거임 -->
+		UPDATE MEMBER
+		   SET MEMID = #{memid}
+			 , MEMPW = #{mempw}
+			 , MEMMAIL = #{memmail}
+		 WHERE MEMID = #{memid}
+	</update>
+</mapper>

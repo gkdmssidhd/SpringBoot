@@ -1,0 +1,34 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+
+<!-- 	<select id="findByUsername" parameterType="String" resultType="CmUserVO"> -->
+<!-- 	<![CDATA[ -->
+<!-- 		SELECT USR_REG_SEQ			/* 사용자등록일련번호 */ -->
+<!-- 		     , CHR_REG_NO			/* 교적번호 */ -->
+<!-- 		     , USR_ID				/* 사용자아이디 */ -->
+<!-- 		     , USR_PW 				/* 사용자비밀번호 */ -->
+<!-- 		     , USR_ROLE				/* 사용자권한 */ -->
+<!-- 		     , ACNT_ST_CD			/* 계정상태코드 */ -->
+<!-- 		  FROM TB_USER -->
+<!-- 		 WHERE USR_ID = #{username}  -->
+<!-- 	]]>	 -->
+<!-- 	</select> -->
+
+	<insert id="insertMember" parameterType="MemberVO">
+	<![CDATA[
+		INSERT 
+		  INTO MEMBER
+		       (
+		       	MEMID
+		      , MEMPW
+		      , MEMMAIL
+		       )
+		VALUES (
+				#{memId}
+			  , #{memPw}
+			  , #{memMail}
+			   )
+	]]>
+	</insert>
+</mapper>

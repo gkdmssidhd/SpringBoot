@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!-- 타임리프 -->
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>MAIN</title>
+	</head>
+	<body>
+	<h2>WELCOME <br /> MAIN PAGE</h2>
+		<!-- 세션값이 null이면 회원가입, 로그인 JOIN과 LOGIN으로 이동. -->
+		<a th:if="${session.memid == null}" href="/member/join">회원가입</a>
+		<a th:if="${session.memid == null}" href="/member/login">로그인</a>
+		
+		<!-- 세션값이 null이 아니라면 목록과 로그아웃이 보이게 -->
+		<a th:if="${session.memid != null}" href="/member/list"></a>
+		<table>
+		<tr>
+		<td th:if="${session.memid != null}" th:action="@{/member/main}" th:object="${member}"></td>
+		</tr>
+		</table>
+		<a th:if="${session.memid != null}" href="/member/logout"></a>
+		
+	</body>
+</html>

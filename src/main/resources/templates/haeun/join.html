@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- 타임리프 -->
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>JOIN</title>
+	</head>
+	<body>
+	<h2>JOIN PAGE</h2>
+		<!-- 회원가입 화면에서는 메인으로만 돌아갈 수 있음 -->
+		<!-- 아이디, 비번, 이메일 입력하는 폼(joinForm), submit=joinProc로 post 방식 -->
+		<form id="joinForm" action="/member/joinProc" method="post"> 
+			<fieldset>
+			ID : <input type="text" name="memid" placeholder="id"><br/>
+			PW : <input type="password" name="mempw" placeholder="password"><br/>
+			EMAIL : <input type="text" name="memmail" placeholder="Email"><br/>
+			<input type="submit" value="회원가입"><br/>
+			</fieldset>
+		</form>
+		<a href="/">MAIN</a>
+	</body>
+</html>

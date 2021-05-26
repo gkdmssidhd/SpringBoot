@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>DETAIL</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<h2>DETAIL</h2>
+		<!-- 화면리턴은 main이지만 URL은 /임! -->
+		<!-- 메인 누를때 session계속 가지고 가서 회원목록 볼 수 있게 -->
+		<a th:if="${session.memid != null}" href="/">메인</a>
+		<a th:if="${session.memid != null}" href="/member/list">리스트</a>		
+
+		<!-- 상세보기에서 수정한거를 modify에 보낼거임 -->
+		<form id="modifyForm" th:action="@{/member/modify}" th:object="${member}">
+			<table>
+			<!-- th:each(타임리프 템플릿에서 for문 while 등과 유사한 반복 처리를 위해 사용)  -->
+				<input type="hidden" th:value="*{memid}" th:field="*{memid}">
+				<input type="hidden"  th:value="*{mempw}" th:field="*{mempw}">
+				<input type="hidden" th:value="*{memmail}" th:field="*{memmail}">
+				
+				<tr>
+					<td th:text="*{memid}" >memid</td>
+		         	<td th:text="*{mempw}">mempw</td>
+		         	<td th:text="*{memmail}">memmail</td>
+		     	</tr> 
+	     	</table>
+	     	<input type="submit" value="수정">
+	     </form>
+	</body>
+</html>

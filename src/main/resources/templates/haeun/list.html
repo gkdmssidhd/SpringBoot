@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>list</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<h2>list</h2>
+		<!-- 화면리턴은 main이지만 URL은 /임! -->
+		<a th:if="${session.memid != null}" href="/">메인</a><br />
+		<!-- 회원 리스트 목록 조회 회원의 전체 정보들이 나와야함. 회원가입 로그인처럼 뭘 보내지 않고 그냥 나와야 됌.  -->		
+			<table>
+			<!-- th:each(타임리프 템플릿에서 for문 while 등과 유사한 반복 처리를 위해 사용)  -->
+				<tr th:each="member : ${memberList}">
+				<!-- memid를 누르면 member/detail페이지로 이동 -->
+					<td>
+					<a th:href="@{/member/detail(memid=${member.memid})}" 
+					   th:text="${member.memid}" 
+					   th:field="*{member.memid}">memid
+					</a>
+					</td>
+		         	<td th:text="${member.mempw}">mempw</td>
+		         	<td th:text="${member.memmail}">memmail</td>
+		     	</tr>
+	     	</table>
+	</body>
+</html>
+
+
+
+
+
+
